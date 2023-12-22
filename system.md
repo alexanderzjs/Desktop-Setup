@@ -72,7 +72,8 @@ sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g' /etc/sudoers
 useradd -G wheel -m ZZZ
 passwd ZZZ
 ```
-4. The current user is Live OS root user. Finish installation by `exit && umount -R /mnt && reboot`. Remember to remove your Live USB otherwise it might boot to your Live USB again.
+4. The current user is newly installed system root user, execute `exit` to return to Live OS root user.
+5. Finish installation by `umount -R /mnt && reboot`. Remember to remove your Live USB, otherwise it might boot to your Live USB again.
 
 ## Enable network and SSH for newly installed system
 1. Login as root user to newly installed system.
