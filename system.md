@@ -42,19 +42,17 @@ mount --mkdir /dev/sda3 /mnt/home
 ```
 
 ## Install base system
-1. Continue remote login as root and save below script as `third.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
-    * XXX: proxy address
+1. Continue remote login as root and set proxy by `export http_proxy="XXX"` and `export https_proxy="XXX"`, where XXX is proxy address.
+2. Save below script as `third.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
     * YYY: fastest Archlinux repository mirror address for you
 ```
-export http_proxy="XXX"
-export https_proxy="XXX"
 timedatectl set-ntp true
 echo "Server = https://YYY/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist 
 pacstrap -K /mnt base base-devel linux linux-firmware intel-ucode networkmanager vim grub openssh git efibootmgr sudo
 genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt
 ```
-2. The current user is root of the newly installed system. Save below script as `fourth.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
+3. The current user is root of the newly installed system. Save below script as `fourth.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
     * XXX/YYY: region and city, e.g. Asia/Shanghai
     * ZZZ: normal username newly created
 Note that, the following script will ask for two passwords to be typed in. First one is root user's password, second one is newly created user's password.
@@ -72,7 +70,7 @@ useradd -G wheel -m ZZZ
 passwd ZZZ
 exit
 ```
-3. The current user is Live OS root user. Finish installation by `umount -R /mnt && reboot`. Remember to remove your Live USB otherwise it might boot to your Live USB again.
+4. The current user is Live OS root user. Finish installation by `umount -R /mnt && reboot`. Remember to remove your Live USB otherwise it might boot to your Live USB again.
 
 ## Enable network and SSH for newly installed system
 1. Login as root user to newly installed system.
