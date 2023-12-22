@@ -152,7 +152,7 @@ systemctl --user enable pipewire-pulse --now
 3. After installation, you'd better reboot the system.
 
 ### Remote desktop with GPU acceleration
-To debug remote desktop connection has GPU acceleration, you can check `~/.xorgxrdp.*.log` for Xorg log, monitor `sudo journalctl -f` for xrdp and kernel log during remote login. To test if your RDP session is GPU accelerated, you can run `nvidia-smi` in an SSH session. If you see `xorgxrdp_helper` in GPU process, you are good to go. There are two variants: Intel/AMD GPU or NVidia GPU.
+To debug remote desktop connection has GPU acceleration, you can check `~/.xorgxrdp.*.log` for Xorg log, monitor `sudo journalctl -f` for xrdp and kernel log during remote login. To test if your RDP session is GPU accelerated, you can run `nvidia-smi` in an SSH session. If you see `xorgxrdp_helper` in GPU process. But, you need to install a Desktop Environment or Window Manager.
 #### Intel GPU or AMD GPU
 1. Remote login session as normal user.
 2. The following commands would be sufficient, but I don't have testing device. Sorry about this.
