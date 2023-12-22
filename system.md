@@ -57,6 +57,7 @@ arch-chroot /mnt
 3. The current user is root of the newly installed system. Save below script as `fourth.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
     * XXX/YYY: region and city, e.g. Asia/Shanghai
     * ZZZ: normal username newly created
+
 Note that, the following script will ask for two passwords to be typed in. First one is root user's password, second one is newly created user's password.
 ```
 ln -sf /usr/share/zoneinfo/XXX/YYY /etc/localtime
