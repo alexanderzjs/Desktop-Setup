@@ -178,7 +178,7 @@ sudo -E bash -c 'pacman -S xorg-server-devel'
 git clone https://github.com/Nexarian/xorgxrdp.git
 cd xorgxrdp && git checkout mainline_merge_backup
 ./bootstrap
-XRDP_CFLAGS="-I/path/to/git/cloned/xrdp/common" ./configure --with-simd --enable-lrandr
+XRDP_CFLAGS="-I/path/to/git/cloned/xrdp/common" ./configure --with-simd --enable-lrandr
 make -j8 clean all
 sudo make install
 BUS_ID=$(nvidia-smi --query-gpu=pci.bus --format=csv | sed -n '2 p' | xargs -I{} printf "%d\n" {})
