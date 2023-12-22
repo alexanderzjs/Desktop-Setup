@@ -159,12 +159,13 @@ To debug remote desktop connection has GPU acceleration, you can check `~/.xorgx
 `paru -S xorgxrdp-glamor --mflags="--skippgpcheck" --sudoflags="http_proxy=$http_proxy https_proxy=$https_proxy no_proxy=$no_proxy"`
 #### Nvidia GPU
 1. Remote login session as normal user.
-2. Save below script as `nineth.sh`, give it execution privilege and execute it.
+2. Save below script as `nineth.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
+    * XXX: normal user name
 ```
-sudo -E bash -c 'pacman -S nvidia'
+sudo -E bash -c 'pacman -S nvidia'
 sudo usermod XXX -a -G video
 sudo usermod XXX -a -G tty
-sudo -E bash -c 'pacman -S fuse2 nasm'
+sudo -E bash -c 'pacman -S fuse2 nasm'
 git clone https://github.com/Nexarian/xrdp.git
 cd xrdp && git checkout mainline_merge_backup
 ./bootstrap
@@ -172,7 +173,7 @@ cd xrdp && git checkout mainline_merge_backup
 make -j8 clean all
 sudo make install
 cd ..
-sudo -E bash -c 'pacman -S xorg-server-devel'
+sudo -E bash -c 'pacman -S xorg-server-devel'
 git clone https://github.com/Nexarian/xorgxrdp.git
 cd xorgxrdp && git checkout mainline_merge_backup
 ./bootstrap
