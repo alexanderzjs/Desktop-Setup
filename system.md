@@ -42,10 +42,12 @@ mount --mkdir /dev/sda3 /mnt/home
 ```
 
 ## Install base system
-1. Continue remote login as root and set proxy by `export http_proxy="XXX"` and `export https_proxy="XXX"`, where XXX is proxy address.
-2. Save below script as `third.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
+1. Continue remote login as root and save below script as `third.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
+    * XXX: proxy address
     * YYY: fastest Archlinux repository mirror address for you
 ```
+export http_proxy="XXX"
+export https_proxy="XXX"
 timedatectl set-ntp true
 echo "Server = https://YYY/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist 
 pacstrap -K /mnt base base-devel linux linux-firmware intel-ucode networkmanager vim grub openssh git efibootmgr sudo
