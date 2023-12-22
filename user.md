@@ -16,7 +16,7 @@ sed -i 's/xclock/#xclock/g' ~/.xinitrc
 sed -i 's/xterm/#xterm/g' ~/.xinitrc
 sed -i 's/exec/#exec/g' ~/.xinitrc
 echo "exec herbstluftwm" >> ~/.xinitrc
-sudo -E bash -c 'pacman -S zsh herbstluftwm rofi polybar starship'
+sudo -E bash -c 'pacman -S zsh herbstluftwm rofi polybar starship'
 echo 'export http_proxy="http://XXX/"' >> ~/.zshrc
 echo 'export https_proxy="http://XXX/"' >> ~/.zshrc
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
