@@ -161,20 +161,21 @@ To debug remote desktop connection has GPU acceleration, you can check `~/.xorgx
 1. Remote login session as normal user.
 2. Save below script as `nineth.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
     * XXX: normal user name
+    * -I/path/to/git/cloned/xrdp: 
 ```
 sudo -E bash -c 'pacman -S nvidia'
 sudo usermod XXX -a -G video
 sudo usermod XXX -a -G tty
-sudo -E bash -c 'pacman -S fuse2 nasm'
-git clone https://github.com/Nexarian/xrdp.git
+sudo -E bash -c 'pacman -S fuse2 nasm x264'
+git clone https://github.com/Nexarian/xrdp.git
 cd xrdp && git checkout mainline_merge_backup
 ./bootstrap
 ./configure --enable-fuse --enable-rfxcodec --enable-pixman --enable-mp3lame --enable-sound --enable-opus --enable-fdkaac --enable-x264 --enable-nvenc
 make -j8 clean all
 sudo make install
 cd ..
-sudo -E bash -c 'pacman -S xorg-server-devel'
-git clone https://github.com/Nexarian/xorgxrdp.git
+sudo -E bash -c 'pacman -S xorg-server-devel'
+git clone https://github.com/Nexarian/xorgxrdp.git
 cd xorgxrdp && git checkout mainline_merge_backup
 ./bootstrap
 XRDP_CFLAGS="-I/path/to/git/cloned/xrdp/common" ./configure --with-simd --enable-lrandr
