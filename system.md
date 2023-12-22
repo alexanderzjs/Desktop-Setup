@@ -77,25 +77,25 @@ passwd ZZZ
 
 ## Enable network and SSH for newly installed system
 1. Login as root user to newly installed system.
-2. Save below script as `fifth.sh`, give it execution privilege and execute it.
+2. Save below script as `fifth.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
+    * XXX: proxy address
 ```
 systemctl enable NetworkManager --now
 sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/g' /etc/ssh/sshd_config
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 systemctl enable sshd --now
+echo 'export http_proxy="http://XXX/"' >> /etc/bash.bashrc
+echo 'export https_proxy="http://XXX/"' >> /etc/bash.bashrc
 ip a
 ```
 Note: Remember this IP address as "System IP".
 
 ## Install AUR package manager paru
 1. Remote login as normal user with "System IP".
-2. Save below script as `sixth.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
-    * XXX: proxy address
+2. Save below script as `sixth.sh`, give it execution privilege and execute it.
 ```
-sudo echo 'export http_proxy="http://XXX/"' >> /etc/bash.bashrc
-sudo echo 'export https_proxy="http://XXX/"' >> /etc/bash.bashrc
-git clone https://aur.archlinux.org/paru-bin.git
+git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
 makepkg -si
 cd ../ && rm -rf paru-bin
