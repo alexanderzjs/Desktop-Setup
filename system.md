@@ -120,7 +120,7 @@ sed -i 's/xclock/#xclock/g' ~/.xinitrc
 sed -i 's/xterm -geometry/#xterm -geometry/g' ~/.xinitrc
 sed -i 's/exec xterm/#exec xterm/g' ~/.xinitrc
 ```
-3. Switch to root user with `sudo su` and execute `sudo echo "allowed_users = anybody" >> /etc/X11/Xwrapper.config` and `sudo echo "needs_root_rights = no" >> /etc/X11/Xwrapper.config`
+3. Switch to root user with `sudo su` and execute `echo "allowed_users = anybody" >> /etc/X11/Xwrapper.config` and `echo "needs_root_rights = no" >> /etc/X11/Xwrapper.config`
 
 ### Remote desktop without audio and video
 1. Continue remote login session as normal user.
