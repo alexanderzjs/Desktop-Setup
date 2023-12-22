@@ -16,7 +16,7 @@ sed -i 's/xclock/#xclock/g' ~/.xinitrc
 sed -i 's/xterm/#xterm/g' ~/.xinitrc
 sed -i 's/exec/#exec/g' ~/.xinitrc
 echo "exec herbstluftwm" >> ~/.xinitrc
-sudo -E bash -c 'pacman -S herbstluftwm zsh rofi polybar starship wqy-zenhei fcitx5 fcitx5-configtool fcitx5-chinese-addons'
+sudo -E bash -c 'pacman -S zsh herbstluftwm rofi polybar starship'
 echo 'export http_proxy="http://XXX/"' >> ~/.zshrc
 echo 'export https_proxy="http://XXX/"' >> ~/.zshrc
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
@@ -35,9 +35,13 @@ sed -i 's@#!/usr/bin/env bash@#!/usr/bin/env bash\n~/.config/polybar/launch.sh \
 sed -i 's@hc keybind $Mod-Return spawn "${TERMINAL:-xterm}"@hc keybind $Mod-Return spawn wezterm@g' ~/.config/herbstluftwm/autostart
 sed -i 's@# basic movement@hc keybind $Mod-d spawn rofi -show drun\n\n# basic movement@g' ~/.config/herbstluftwm/autostart
 touch ~/.config/starship.toml
+sudo sed -i 's@xterm@sh ~/.xinitrc@g' /etc/xrdp/startwm.sh
 ```
 Don't forget to update rofi's configuration `config.rasi` and Starship's configuration `starship.toml`.
 
-## Enable user's window manager for remote desktop access
-This can be done by editing `/etc/xrdp/startwm.sh`. For example, you can start a xorg session specified in `~/.xinitrc` by replace `xterm` with `sh ~/.xinitrc` in `/etc/xrdp/startwm.sh`.
-
+## Install fonts
+1. Remote login session as normal user.
+2. Save below script as `font.sh`, give it execution privilege and execute it.
+```
+sudo -E bash -c 'pacman -S wqy-zenhei fcitx5 fcitx5-configtool fcitx5-chinese-addons'
+```
