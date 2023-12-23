@@ -161,7 +161,7 @@ To debug remote desktop connection has GPU acceleration, you can check `~/.xorgx
 1. Remote login session as normal user.
 2. Save below script as `nineth.sh`, give it execution privilege and execute it. Remember to replace the following in the script:
     * XXX: normal user name
-    * -I/path/to/git/cloned/xrdp: 
+    * -I/path/to/git/cloned/xrdp: path of previously cloned xrdp
 ```
 sudo -E bash -c 'pacman -S nvidia'
 sudo usermod XXX -a -G video
